@@ -2,6 +2,7 @@ from django.db import models
 
 
 class BookModel(models.Model):
+    image = models.ImageField(upload_to='books-images', null=True)
     author = models.CharField(max_length=128)
     title = models.CharField(max_length=255)
     info = models.TextField()
@@ -13,3 +14,10 @@ class BookModel(models.Model):
 
     def __str__(self):
         return f"Name: {self.title}, Author: {self.author}"
+
+    def __repr__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'book'
+        verbose_name_plural = 'books'
